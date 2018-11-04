@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="context1" >
+     <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://localhost:3306/dlwtest"
+            userId="root" password="123456" />
+        <javaModelGenerator targetPackage="com.cn.scala.model"
+            targetProject="com.cn.scala" />
+        <sqlMapGenerator targetPackage="mybatis"
+            targetProject="com.cn.scala"  />
+        <javaClientGenerator targetPackage="com.cn.scala.mapper"
+            targetProject="com.cn.scala" type="XMLMAPPER" />
+        <table schema="dlwtest" tableName="user_t" 
+         enableCountByExample="false" enableUpdateByExample="false"
+            enableDeleteByExample="false" enableSelectByExample="false"
+            selectByExampleQueryId="false" domainObjectName="User"
+
+        />
+        
+    </context>
+</generatorConfiguration>
