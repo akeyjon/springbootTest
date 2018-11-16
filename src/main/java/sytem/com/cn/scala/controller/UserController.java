@@ -1,5 +1,10 @@
 package com.cn.scala.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.apache.commons.logging.Log;
@@ -7,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,14 +33,15 @@ public class UserController {
 	
 	@RequestMapping(value="/toLogin",method=RequestMethod.GET)
 	public String toLogin(){
-		
+		List<Object> list = new ArrayList<>();
+		Map<String, Object> map =new HashMap<>();
 		return "system/index";
 	}
 	
 	@RequestMapping(value="/toShowUser",method=RequestMethod.GET)
-	public String getUserInfo(@RequestParam ("id") String id, Model model){
-		int userId = Integer.parseInt(id);
-		User user = userService.findUser(userId);
+	public String getUserInfo(@RequestParam ("id") int id, Model model) throws Exception{
+//		int userId = Integer.parseInt(id);
+		User user = userService.findUser(id);
 		model.addAttribute("user", user);
 		LOG.info("请求用户数据");
 		return "system/showUser";
@@ -42,9 +49,16 @@ public class UserController {
 	
 	@RequestMapping(value="/toGetUser",method=RequestMethod.GET)
 	@ResponseBody
-	public User getUser(String id){
-		int userId = Integer.parseInt(id);
-		User user = userService.findUser(userId);
+	public User getUser(@RequestParam ("id") Integer id, @RequestParam ("name") String name) {
+//		int userId = Integer.parseInt(id);
+		User user = null;
+        try {
+            user = userService.findUser(id);
+            System.out.println(name);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 		return user;
 	}
 }

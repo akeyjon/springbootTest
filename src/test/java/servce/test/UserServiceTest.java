@@ -24,7 +24,15 @@ public class UserServiceTest extends BaseTest{
 	public void testFind(){
 		User user = new User();
 		user.setId(1);
-		User findUser = userService.login(user);
+		User findUser = null;
+        try {
+            findUser = userService.findUser(1);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            System.out.println("=======================");
+            System.out.println("=======================");
+            System.out.println("=======================");
+        }
 		System.out.println(findUser);
 	}
 }
