@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -25,7 +26,7 @@ import com.cn.scala.service.UserService;
 import com.cn.scala.service.imp.UserServiceImp;
 @Controller
 @RequestMapping("/system")
-public class UserController {
+public class UserController extends BaseController{
 
 	private static final Log LOG = LogFactory.getLog(UserController.class);
 	@Autowired
@@ -49,9 +50,11 @@ public class UserController {
 	
 	@RequestMapping(value="/toGetUser",method=RequestMethod.GET)
 	@ResponseBody
-	public User getUser(@RequestParam ("id") Integer id, @RequestParam ("name") String name) {
+	public User getUser(@RequestParam ("id") Integer id) {
 //		int userId = Integer.parseInt(id);
 		User user = null;
+		String name = (String) getRequest().getParameter("name");
+		System.out.println("name = "+ name);
         try {
             user = userService.findUser(id);
             System.out.println(name);

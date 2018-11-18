@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
 
+import com.cn.scala.anotion.BusesAnotion;
+
 
 /**
  * 异常处理
@@ -36,7 +38,8 @@ public class ExceptionAop {
             // TODO Auto-generated catch block
             log.error(e.getMessage(),e);
             System.out.println("异常出现了" + className + methodName);
-            e.printStackTrace();
+//            e.printStackTrace();
+            
         }
         return ob;
     }
