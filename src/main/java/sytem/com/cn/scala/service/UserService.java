@@ -13,4 +13,7 @@ public interface UserService {
 	
 	
 	public User findUser(int id) throws Exception;
+	
+	public User addUser(int id);
+	
 }

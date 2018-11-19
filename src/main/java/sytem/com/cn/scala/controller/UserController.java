@@ -32,10 +32,12 @@ public class UserController extends BaseController{
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value="/toLogin",method=RequestMethod.GET)
-	public String toLogin(){
-		List<Object> list = new ArrayList<>();
-		Map<String, Object> map =new HashMap<>();
+	@RequestMapping(value="/toLogin/{id}",method=RequestMethod.GET)
+	public String toLogin(@PathVariable int id){
+//		List<Object> list = new ArrayList<>();
+//		Map<String, Object> map =new HashMap<>();
+		userService.addUser(id);
+		
 		return "system/index";
 	}
 	
