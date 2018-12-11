@@ -1,11 +1,16 @@
 package com.cn.scala.cache;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Component;
 
+/**
+ *  自定义缓存
+ * @author chances
+ *
+ * @param <T>
+ */
 @Component
 public class CacheContext<T> {
 

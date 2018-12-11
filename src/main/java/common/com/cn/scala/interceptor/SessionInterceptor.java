@@ -7,6 +7,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * 自定义拦截器
+ * @author chances
+ *
+ */
 @Component
 public class SessionInterceptor implements HandlerInterceptor{
 
